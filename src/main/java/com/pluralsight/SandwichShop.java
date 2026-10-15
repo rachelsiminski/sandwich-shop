@@ -18,15 +18,41 @@ public class SandwichShop {
         System.out.print("Enter your age: ");
         int userAge = scanner.nextInt();
 
-        float discount = 0f;
         float regularSandwichPrice = 5.95f;
         float largeSandwichPrice = 8.95f;
+        float youthDiscount = .1f;
+        float seniorDiscount = .2f;
+        float totalPrice = 0f;
 
         // Cost calculation
-        // regular size is $5.45
-        // large size is $8.95
-        // discount for <= 17 is 10%
-        // discount for >= 65 is 20%
+        if (userAge <= 17) {
+            if (sandwichSize ==1) {
+                totalPrice = regularSandwichPrice - (regularSandwichPrice * youthDiscount);
+            }
+            else if (sandwichSize == 2){
+                totalPrice = largeSandwichPrice - (largeSandwichPrice * youthDiscount);
+            }
+        }
+        else if (userAge >= 65) {
+            if (sandwichSize == 1) {
+                totalPrice = regularSandwichPrice - (regularSandwichPrice * seniorDiscount);
+            }
+            else if (sandwichSize == 2) {
+                totalPrice = largeSandwichPrice - (largeSandwichPrice * seniorDiscount);
+            }
+        }
+        else {
+            if (sandwichSize == 1) {
+                totalPrice = regularSandwichPrice;
+            }
+            else {
+                totalPrice = largeSandwichPrice;
+            }
+        }
 
+        // Display results
+        System.out.println("Order Confirmation");
+        System.out.println("You are " + userAge + " years old. You want the #" + sandwichSize);
+        System.out.printf("Order total: $%.2f", totalPrice);
     }
 }
