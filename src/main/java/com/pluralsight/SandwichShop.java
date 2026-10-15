@@ -18,6 +18,9 @@ public class SandwichShop {
         System.out.print("Enter your age: ");
         int userAge = scanner.nextInt();
 
+        // Eat the new line
+        scanner.nextLine();
+
         float regularSandwichPrice = 5.95f;
         float largeSandwichPrice = 8.95f;
         float youthDiscount = .1f;
@@ -53,8 +56,6 @@ public class SandwichShop {
         // Calculate Loaded Cost
         System.out.print("Would you like to make your sandwich LOADED today? (y/n): ");
         String isLoaded = scanner.next();
-
-        System.out.println();
 
         if (isLoaded.equals("y") || isLoaded.equals("Y")) {
             if (sandwichSize == 1) {
