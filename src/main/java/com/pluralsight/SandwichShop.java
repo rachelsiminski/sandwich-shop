@@ -12,7 +12,7 @@ public class SandwichShop {
         Scanner scanner = new Scanner(System.in);
 
         // Read, declare, initialize variables for sandwiches and user
-        System.out.print("Select your size: 1. Regular 8\" or 2. Large 12\"" );
+        System.out.print("Select your size: 1. Regular 8\" or 2. Large 12\":");
         int sandwichSize = scanner.nextInt();
 
         System.out.print("Enter your age: ");
@@ -47,6 +47,20 @@ public class SandwichShop {
             }
             else {
                 totalPrice = largeSandwichPrice;
+            }
+        }
+
+        // Calculate Loaded Cost
+        System.out.print("Would you like to make your sandwich LOADED today? (y/n): ");
+        String isLoaded = scanner.next();
+
+        System.out.println();
+
+        if (isLoaded.equals("y") || isLoaded.equals("Y")) {
+            if (sandwichSize == 1) {
+                totalPrice++;
+            } else {
+                totalPrice += 1.75f;
             }
         }
 
