@@ -21,49 +21,49 @@ public class SandwichShop {
         // Eat the new line
         scanner.nextLine();
 
-        float regularSandwichPrice = 5.95f;
+        float regularSandwichPrice = 5.45f;  // Fixed price
         float largeSandwichPrice = 8.95f;
         float youthDiscount = .1f;
         float seniorDiscount = .2f;
         float totalPrice = 0f;
 
-        // Cost calculation
-        if (userAge <= 17) {
-            if (sandwichSize ==1) {
-                totalPrice = regularSandwichPrice - (regularSandwichPrice * youthDiscount);
-            }
-            else if (sandwichSize == 2){
-                totalPrice = largeSandwichPrice - (largeSandwichPrice * youthDiscount);
-            }
-        }
-        else if (userAge >= 65) {
-            if (sandwichSize == 1) {
-                totalPrice = regularSandwichPrice - (regularSandwichPrice * seniorDiscount);
-            }
-            else if (sandwichSize == 2) {
-                totalPrice = largeSandwichPrice - (largeSandwichPrice * seniorDiscount);
-            }
-        }
-        else {
-            if (sandwichSize == 1) {
-                totalPrice = regularSandwichPrice;
-            }
-            else {
-                totalPrice = largeSandwichPrice;
-            }
-        }
-
         // Calculate Loaded Cost
         System.out.print("Would you like to make your sandwich LOADED today? (y/n): ");
         String isLoaded = scanner.next();
 
-        if (isLoaded.equals("y") || isLoaded.equals("Y")) {
+        if (isLoaded.equals("y") || isLoaded.equals("Y")) {   // Moved to calculate before age
             if (sandwichSize == 1) {
-                totalPrice++;
+                totalPrice = 1f + regularSandwichPrice;
             } else {
-                totalPrice += 1.75f;
+                totalPrice = 1.75f + largeSandwichPrice;
             }
         }
+
+        // Cost calculation
+        if (userAge <= 17) {   // Fixed calculations to account for loaded first ^
+            if (sandwichSize ==1) {
+                totalPrice = totalPrice - (regularSandwichPrice * youthDiscount);
+            }
+            else if (sandwichSize == 2){
+                totalPrice = totalPrice - (largeSandwichPrice * youthDiscount);
+            }
+        }
+        else if (userAge >= 65) {
+            if (sandwichSize == 1) {
+                totalPrice = totalPrice - (regularSandwichPrice * seniorDiscount);
+            }
+            else if (sandwichSize == 2) {
+                totalPrice = totalPrice - (largeSandwichPrice * seniorDiscount);
+            }
+        }
+//        else {
+//            if (sandwichSize == 1) {
+//                totalPrice = regularSandwichPrice;
+//            }
+//            else {
+//                totalPrice = largeSandwichPrice;
+//            }
+//        }
 
         // Display results
         System.out.println("Order Confirmation");
